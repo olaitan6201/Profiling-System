@@ -1,0 +1,70 @@
+<form [formGroup]="addClientForm" (ngSubmit)="onSubmit()">
+    <div class="card">
+        <div class="card-header bg-primary text-light">
+            <i class="fa fa-user-plus"> </i> 
+            <b> Add Client</b>   
+        </div>
+        <div class="card-body">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="fname">First Name</label>
+                        <input type="text" class="form-control" required="required" formControlName="fname"/>
+                        <span *ngIf="!addClientForm.get('fname').valid && addClientForm.get('fname').touched">Please enter your first name</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="lname">Last Name</label>
+                        <input type="text" class="form-control" required="required" formControlName="lname"/>
+                        <span *ngIf="!addClientForm.get('lname').valid && addClientForm.get('lname').touched">Please enter your last name</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="mail">E-mail</label>
+                        <input type="email" class="form-control" required="required" formControlName="email"/>
+                        <span *ngIf="!addClientForm.get('email').valid && addClientForm.get('email').touched">Please enter a valid email</span>
+                        <input type="text" class="form-control" required="required" formControlName="datec" hidden readonly/>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="plc">Primary Legal Counsel</label>
+                        <input type="text" class="form-control" required="required" formControlName="plc"/>
+                        <span *ngIf="!addClientForm.get('plc').valid && addClientForm.get('plc').touched">Please enter your primary legal counsel</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">Date of Birth</label>
+                        <input type="date" class="form-control" required="required" formControlName="dob"/>
+                        <span *ngIf="!addClientForm.get('dob').valid && addClientForm.get('dob').touched">Date not set (consider retyping)</span>
+                        <!-- <input type="text" class="form-control" required="required" formControlName="dob" value="{{ dob }}"/> -->
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Image</label>
+                        <!-- <angular-file-uploader 
+                            [config]="afuConfig">
+                        </angular-file-uploader> -->
+                        <input (change)="onFileSelected($event)" type="file" class="form-control"/>
+                        <span *ngIf="!imageData">Please select an image (not required)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label for="fname">Case Details</label>
+                        <textarea type="text" class="form-control" required="required" rows="5" formControlName="casedetails"></textarea>
+                        <span *ngIf="!addClientForm.get('casedetails').valid && addClientForm.get('casedetails').touched">Please enter your case details</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div *ngIf="imageData">
+                        <img [src]="imageData" [alt]="addClientForm.value.name" class="img-thumbnail"/>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-outline-primary btn-sm btn-block">Submit</button>
+        </div>
+    </div>
+</form>

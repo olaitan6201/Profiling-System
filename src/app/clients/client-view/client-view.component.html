@@ -1,0 +1,40 @@
+<div class="content" *ngFor="let client of client">
+    <div class="text-center">
+        <h3>Client's Data</h3>
+        <img [src]="client.image" [alt]="client.fname" class="img-thumbnail" style="max-height: 300px; max-width: 280px; min-height: 300px; min-width: 280px"/>
+    </div><br/>
+    <table class="table-bordered" width="100%" cellpadding="10">
+        <tbody>
+            <tr>
+                <th>Client's Name</th>
+                <td>{{ client.fname }} {{ client.lname }}</td>
+            </tr>
+            <tr>
+                <th>Client's Email</th>
+                <td>{{ client.email }}</td>
+            </tr>
+            <tr>
+                <th>Client's DOB</th>
+                <td>{{ client.dob }}</td>
+            </tr>
+            <tr>
+                <th>Date Profiled</th>
+                <td>{{ client.datec }}</td>
+            </tr>
+            <tr>
+                <th>Primary Legal Counsel</th>
+                <td>{{ client.plc }}</td>
+            </tr>
+            <tr>
+                <th>Case details</th>
+                <td>{{ client.casedetails }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="text-center view">
+        <a href="javascript:print()" class="btn btn-outline-primary">
+            <i class="fa fa-print"></i> Print
+        </a>
+    </div>
+</div>

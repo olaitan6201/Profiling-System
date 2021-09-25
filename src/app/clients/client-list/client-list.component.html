@@ -1,0 +1,66 @@
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <div class="pull-right">
+        <input type="search" formControlName="search" class="form-control" placeholder="Search by Last Name. . ." #search/>
+        <button type="submit" hidden></button>
+    </div>
+</form>
+
+<div class="pull-left">
+    <button type="button" class="btn btn-outline-warning btn-sm" (click)="reloadTable()">
+        <i class="fa fa-history"></i> Reload
+    </button>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-hover table-striped">
+        <thead class="bg-primary text-light">
+          <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Primary Legal Counsel</th>
+                <th>Date of Birth</th>
+                <th>Image</th>
+                <th>Date Profiled</th>
+                <th colspan="2">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let client of clients; let i = index">
+                <th>{{ i + 1 }}</th>
+                <td>{{ client.fname }} {{ client.lname }}</td>
+                <td>{{ client.email }}</td>
+                <td>{{ client.plc }}</td>
+                <td>{{ client.dob }}</td>
+                <td>
+                    <img *ngIf="client.image; else noImage" [src]="client.image" [alt]="client.fname" class="img-fluid"/>
+                    <ng-template #noImage>
+                        <p class="text-center">
+                            <em class="text-danger">No Image</em>
+                        </p>
+                    </ng-template>
+                </td>
+                <td>{{ client.datec }}</td>
+                <td>
+                    <a [routerLink]="['/clients/view/'+client._id]">
+                        <button type="button" class="btn btn-outline-primary btn-sm">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                    </a>
+                    
+                <td>
+                    <a [routerLink]="['/clients/edit/'+client._id]">
+                        <button type="button" class="btn btn-outline-warning btn-sm">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+      </table>
+    
+</div>
+
+
+  
+  
