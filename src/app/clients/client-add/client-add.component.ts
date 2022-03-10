@@ -67,10 +67,10 @@ export class ClientAddComponent implements OnInit {
       alert('Your information is not yet complete, please fill all required fields.');
     }
     // console.log(this.addClientForm.valid);
-    
+
   }
 
-  
+
 
 
   // afuConfig = {

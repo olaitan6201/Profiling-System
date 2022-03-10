@@ -12,7 +12,14 @@ var app = express();
 var route = require('./backend/route');
 
 //connect to mongodb
-mongoose.connect('mongodb://127.0.0.1:27017/clientslist');
+// mongoose.connect('mongodb://127.0.0.1:27017/clientslist');
+mongoose.connect('mongodb+srv://developer_habeeb:4AGuuAKvJBvPZ@cluster0.hlc4c.mongodb.net/profiling-system?retryWrites=true&w=majority')
+.then(()=>{
+  console.log('Connected to database');
+})
+.catch((err)=>{
+  console.log('Connection failed : '+err);
+});
 
 //on connection 
 mongoose.connection.on('connected', ()=>{

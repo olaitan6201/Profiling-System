@@ -1,8 +1,8 @@
 <form [formGroup]="addClientForm" (ngSubmit)="onSubmit()">
     <div class="card">
         <div class="card-header bg-primary text-light">
-            <i class="fa fa-user-plus"> </i> 
-            <b> Add Client</b>   
+            <i class="fa fa-user-plus"> </i>
+            <b> Add Client</b>
         </div>
         <div class="card-body">
 
@@ -39,7 +39,7 @@
                     </div>
                     <div class="form-group">
                         <label for="image">Image</label>
-                        <!-- <angular-file-uploader 
+                        <!-- <angular-file-uploader
                             [config]="afuConfig">
                         </angular-file-uploader> -->
                         <input (change)="onFileSelected($event)" type="file" class="form-control"/>
@@ -61,7 +61,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
         <div class="card-footer">
             <button type="submit" class="btn btn-outline-primary btn-sm btn-block">Submit</button>
