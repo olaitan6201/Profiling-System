@@ -1,1 +1,0 @@
-web: node app.jsheroku git:remote -a profiling-sytem-app
