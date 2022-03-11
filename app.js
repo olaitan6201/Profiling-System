@@ -14,27 +14,27 @@ var route = require('./backend/route');
 //connect to mongodb
 // mongoose.connect('mongodb://127.0.0.1:27017/clientslist');
 mongoose.connect('mongodb+srv://developer_habeeb:4AGuuAKvJBvPZ@cluster0.hlc4c.mongodb.net/profiling-system?retryWrites=true&w=majority')
-.then(()=>{
-  console.log('Connected to database');
-})
-.catch((err)=>{
-  console.log('Connection failed : '+err);
-});
+    .then(() => {
+        console.log('Connected to database');
+    })
+    .catch((err) => {
+        console.log('Connection failed : ' + err);
+    });
 
 //on connection 
-mongoose.connection.on('connected', ()=>{
+mongoose.connection.on('connected', () => {
     console.log('Connected to database mongodb @ 27017');
 });
 
-mongoose.connection.on('connected', (err)=>{
-    if(err){
-        console.log("Error in database con: "+err);
+mongoose.connection.on('connected', (err) => {
+    if (err) {
+        console.log("Error in database con: " + err);
     }
 });
 
 
 ///port no
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 ///adding middleware - cors
 app.use(cors());
@@ -49,10 +49,10 @@ app.use('/api', route);
 
 
 ///testing server
-app.get('/', (req, res) =>{
+app.get('/', (req, res) => {
     res.send('foobar');
 });
 
-app.listen(port, ()=>{
-    console.log('Server started at port: '+port);
+app.listen(port, () => {
+    console.log('Server started at port: ' + port);
 })
