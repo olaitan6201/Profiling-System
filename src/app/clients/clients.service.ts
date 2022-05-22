@@ -26,7 +26,7 @@ export class ClientsService implements OnInit {
     }
 
     getClient(id:string){
-        this.http.get<{message: string, clients: Client[]}>('http://localhost:3000/api/clients/fetch/'+id)
+        this.http.get<{message: string, clients: Client[]}>('https://profiling-system-api.herokuapp.com/api/clients/fetch/'+id)
         .subscribe(
             (clientData) => {
                 this.client = clientData.clients;
@@ -49,7 +49,7 @@ export class ClientsService implements OnInit {
 
 
     getClientsByAPI(){
-        this.http.get<{message: string, clients: Client[]}>('http://localhost:3000/api/clients/fetch')
+        this.http.get<{message: string, clients: Client[]}>('https://profiling-system-api.herokuapp.com/api/clients/fetch')
         .subscribe(
             (clientData) => {
                 this.clients = clientData.clients;
@@ -64,12 +64,12 @@ export class ClientsService implements OnInit {
 
     //     headers.append('Content-Type', 'application-json');
 
-    //     return this.http.post('http://localhost:3000/api/clients/add', newClient, {headers: headers})
+    //     return this.http.post('https://profiling-system-api.herokuapp.com/api/clients/add', newClient, {headers: headers})
     //     .map((res: Response) => res.json());
     // }
 
     deleteClient(id){
-        return this.http.delete('http://localhost:3000/api/clients/delete/'+id)
+        return this.http.delete('https://profiling-system-api.herokuapp.com/api/clients/delete/'+id)
         .map((res: Response) => res.json());
     }
 
@@ -86,7 +86,7 @@ export class ClientsService implements OnInit {
 
         if(client.image){
             clientData.append("image", client.image);
-            this.http.post<{msg: string, client: Client}>("http://localhost:3000/api/clients/add/image", clientData)
+            this.http.post<{msg: string, client: Client}>("https://profiling-system-api.herokuapp.com/api/clients/add/image", clientData)
             .subscribe(
                 (clientData) => {
                     const client: Client = {
@@ -105,7 +105,7 @@ export class ClientsService implements OnInit {
                 }
             );
         }else{
-            this.http.post<{msg: string, client: Client}>("http://localhost:3000/api/clients/add", client)
+            this.http.post<{msg: string, client: Client}>("https://profiling-system-api.herokuapp.com/api/clients/add", client)
             .subscribe(
                 (clientData) => {
                     const client: Client = {
@@ -140,7 +140,7 @@ export class ClientsService implements OnInit {
 
         if(client.image){
             clientData.append("image", client.image);
-            this.http.put<{msg: string, client: Client}>("http://localhost:3000/api/clients/updateWithImage/"+id, clientData)
+            this.http.put<{msg: string, client: Client}>("https://profiling-system-api.herokuapp.com/api/clients/updateWithImage/"+id, clientData)
             .subscribe(
                 (clientData) => {
                     if(clientData.msg === 'success'){
@@ -151,7 +151,7 @@ export class ClientsService implements OnInit {
                 }
             );
         }else{
-            this.http.put<{msg: string, client: Client}>("http://localhost:3000/api/clients/update/"+id, client)
+            this.http.put<{msg: string, client: Client}>("https://profiling-system-api.herokuapp.com/api/clients/update/"+id, client)
             .subscribe(
                 (clientData) => {
                     if(clientData.msg === 'success'){

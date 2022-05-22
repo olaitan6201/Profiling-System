@@ -15,7 +15,7 @@ exports.getClient = async(req, res) => {
 
 
 exports.postClient = (req, res, next)=>{
-    const imagePath = "http://localhost:3000/images/";
+    const imagePath = "https://profiling-system-api.herokuapp.com/images/";
     if(!req.file){
         // const error = new Error('Please upload a file');
         // error.httpStatusCode = 400;
@@ -62,7 +62,7 @@ exports.postClient = (req, res, next)=>{
 
 
 exports.updateClient = (req, res) => {
-    const imagePath = "http://localhost:3000/images/";
+    const imagePath = "https://profiling-system-api.herokuapp.com/images/";
 
     if(!req.file){
         Client.findByIdAndUpdate(req.params.id,
