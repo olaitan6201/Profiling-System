@@ -33,7 +33,7 @@
                 <td>{{ client.plc }}</td>
                 <td>{{ client.dob }}</td>
                 <td>
-                    <img *ngIf="client.image; else noImage" src="//localhost:3000/{{client.image}}" [alt]="client.fname" class="img-fluid"/>
+                    <img *ngIf="client.image; else noImage" src="https://profiling-system-api.herokuapp.com/{{client.image}}" [alt]="client.fname" class="img-fluid"/>
                     <ng-template #noImage>
                         <p class="text-center">
                             <em class="text-danger">No Image</em>
