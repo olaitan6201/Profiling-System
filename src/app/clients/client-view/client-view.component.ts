@@ -18,7 +18,7 @@ export class ClientViewComponent implements OnInit {
   ngOnInit(): void {
     this.clientid = this.route.snapshot.params['id'];
     
-    this.clService.getClient(this.clientid);
+    if(this.clientid) this.clService.getClient(this.clientid);
 
     this.clService.fetchClient.subscribe(
       (client) => {
